@@ -1,5 +1,9 @@
-/login
-/register
-/forgotpassword
-/resetpassword
-/changepassword
+/auth/login
+
+/auth/register
+
+/auth/forgotpassword
+
+/auth/resetpassword
+
+/user/changepassword
