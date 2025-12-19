@@ -10,8 +10,10 @@ const forgotpasswordForm = document.getElementById('forgotpassword_form')
 email.addEventListener('input', () => {
     if (email.value.trim() && !email_isValid(email.value.trim())) {
         err(email)
+        return
     } else {
         clearErr(email)
+        return
     }
 })
 

@@ -14,6 +14,7 @@ username.addEventListener('input', e => {
     }
 
     clearErr(username)
+    return
 })
 
 password.addEventListener('input', e => {
@@ -23,6 +24,7 @@ password.addEventListener('input', e => {
     }
 
     clearErr(password)
+    return
 })
 
 loginForm.addEventListener('submit', e => {
