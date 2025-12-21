@@ -12,17 +12,20 @@ const resetpasswordForm = document.getElementById('resetpassword_form')
 password.addEventListener('input', e => {
     if(password.value.trim() && !password_isValid(password.value.trim())) {
         err(password)
-        return
     } else {
         clearErr(password)
-        return
     }
 })
 
 passwordConfirm.addEventListener('input', e => {
     if(!passwordConfirm.value.trim()) {
         clearErr(passwordConfirm)
-        return
+    }
+    
+    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+        err(passwordConfirm)
+    } else {
+        clearErr(passwordConfirm)
     }
 })
 
@@ -32,16 +35,5 @@ resetpasswordForm.addEventListener('submit', e => {
     if(!password.value.trim() || !passwordConfirm.value.trim()) {
         err(password)
         err(passwordConfirm)
-        return
-    }
-
-    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
-        err(passwordConfirm)
-        err(password)
-        return
-    } else {
-        clearErr(passwordConfirm)
-        clearErr(password)
-        return
     }
 })

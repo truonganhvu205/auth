@@ -5,23 +5,20 @@ import {
 } from '../utils/index.js'
 
 const email = document.getElementById('email')
-const forgotpasswordForm = document.getElementById('forgotpassword_form')
+const forgotPasswordForm = document.getElementById('forgotPassword_form')
 
 email.addEventListener('input', () => {
     if (email.value.trim() && !email_isValid(email.value.trim())) {
         err(email)
-        return
-    } else {
-        clearErr(email)
-        return
     }
+
+    clearErr(email)
 })
 
-forgotpasswordForm.addEventListener('submit', e => {
+forgotPasswordForm.addEventListener('submit', e => {
     e.preventDefault()
 
     if(!email.value.trim()) {
         err(email)
-        return
     }
 })

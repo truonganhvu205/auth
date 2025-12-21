@@ -16,38 +16,37 @@ const registerForm = document.getElementById('register_form')
 username.addEventListener('input', e => {
     if (username.value.trim() && !username_isValid(username.value.trim())) {
         err(username)
-        return
-    } else {
-        clearErr(username)
-        return
     }
+
+    clearErr(username)
 })
 
 email.addEventListener('input', () => {
     if (email.value.trim() && !email_isValid(email.value.trim())) {
         err(email)
-        return
-    } else {
-        clearErr(email)
-        return
     }
+
+    clearErr(email)
 })
 
 password.addEventListener('input', e => {
     if(password.value.trim() && !password_isValid(password.value.trim())) {
         err(password)
-        return
-    } else {
-        clearErr(password)
-        return
     }
+    
+    clearErr(password)
 })
 
 passwordConfirm.addEventListener('input', e => {
     if(!passwordConfirm.value.trim()) {
         clearErr(passwordConfirm)
-        return
     }
+
+    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+        err(passwordConfirm)
+    }
+    
+    clearErr(passwordConfirm)
 })
 
 registerForm.addEventListener('submit', e => {
@@ -59,16 +58,5 @@ registerForm.addEventListener('submit', e => {
         err(email)
         err(password)
         err(passwordConfirm)
-        return
-    }
-
-    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
-        err(passwordConfirm)
-        err(password)
-        return
-    } else {
-        clearErr(passwordConfirm)
-        clearErr(password)
-        return
     }
 })

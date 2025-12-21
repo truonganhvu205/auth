@@ -10,21 +10,17 @@ const loginForm = document.getElementById('login_form')
 username.addEventListener('input', e => {
     if(!username.value.trim()) {
         clearErr(username)
-        return
     }
 
     clearErr(username)
-    return
 })
 
 password.addEventListener('input', e => {
     if(!password.value.trim()) {
         clearErr(password)
-        return
     }
 
     clearErr(password)
-    return
 })
 
 loginForm.addEventListener('submit', e => {
@@ -33,6 +29,5 @@ loginForm.addEventListener('submit', e => {
     if(!username.value.trim() || !password.value.trim()) {
         err(username)
         err(password)
-        return
     }
 })
