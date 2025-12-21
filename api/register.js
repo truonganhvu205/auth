@@ -16,25 +16,25 @@ const registerForm = document.getElementById('register_form')
 username.addEventListener('input', e => {
     if (username.value.trim() && !username_isValid(username.value.trim())) {
         err(username)
+    } else {
+        clearErr(username)
     }
-
-    clearErr(username)
 })
 
 email.addEventListener('input', () => {
     if (email.value.trim() && !email_isValid(email.value.trim())) {
         err(email)
+    } else {
+        clearErr(email)
     }
-
-    clearErr(email)
 })
 
 password.addEventListener('input', e => {
     if(password.value.trim() && !password_isValid(password.value.trim())) {
         err(password)
+    } else {
+        clearErr(password)
     }
-    
-    clearErr(password)
 })
 
 passwordConfirm.addEventListener('input', e => {
@@ -44,9 +44,9 @@ passwordConfirm.addEventListener('input', e => {
 
     if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
         err(passwordConfirm)
+    } else {
+        clearErr(passwordConfirm)
     }
-    
-    clearErr(passwordConfirm)
 })
 
 registerForm.addEventListener('submit', e => {
