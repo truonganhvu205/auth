@@ -11,27 +11,27 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
         email?.focus()
     })
+})
 
-    email.addEventListener('input', () => {
-        if (email.value.trim() && !email_isValid(email.value.trim())) {
-            err(email)
-        } else {
-            clearErr(email)
-        }
-    })
+email.addEventListener('input', () => {
+    if (email.value.trim() && !email_isValid(email.value.trim())) {
+        err(email)
+    } else {
+        clearErr(email)
+    }
+})
 
-    forgotPasswordForm.addEventListener('submit', e => {
-        e.preventDefault()
-        e.stopPropagation()
+forgotPasswordForm.addEventListener('submit', e => {
+    e.preventDefault()
+    e.stopPropagation()
 
-        if(!email.value.trim()) {
-            err(email)
+    if(!email.value.trim()) {
+        err(email)
 
-            requestAnimationFrame(() => {
-                email?.focus()
-                email?.select()
-            })
-            return
-        }
-    })
+        requestAnimationFrame(() => {
+            email?.focus()
+            email?.select()
+        })
+        return
+    }
 })

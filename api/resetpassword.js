@@ -13,47 +13,48 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
         password?.focus()
     })
+})
 
-    password.addEventListener('input', e => {
-        if(password.value.trim() && !password_isValid(password.value.trim())) {
-            err(password)
-        } else {
-            clearErr(password)
-        }
-        
-        if (passwordConfirm.value.trim()) {
-            if (!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
-                err(passwordConfirm)
-            } else {
-                clearErr(passwordConfirm)
-            }
-        }
-    })
-
-    passwordConfirm.addEventListener('input', e => {
-        if(!passwordConfirm.value.trim()) {
-            clearErr(passwordConfirm)
-        }
-        
-        if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+password.addEventListener('input', () => {
+    if(password.value.trim() && !password_isValid(password.value.trim())) {
+        err(password)
+    } else {
+        clearErr(password)
+    }
+    
+    if (passwordConfirm.value.trim()) {
+        if (!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
             err(passwordConfirm)
         } else {
             clearErr(passwordConfirm)
         }
-    })
+    }
+})
 
-    resetpasswordForm.addEventListener('submit', e => {
-        e.preventDefault()
+passwordConfirm.addEventListener('input', () => {
+    if(!passwordConfirm.value.trim()) {
+        clearErr(passwordConfirm)
+    }
+    
+    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+        err(passwordConfirm)
+    } else {
+        clearErr(passwordConfirm)
+    }
+})
 
-        if(!password.value.trim() || !passwordConfirm.value.trim()) {
-            err(password)
-            err(passwordConfirm)
+resetpasswordForm.addEventListener('submit', e => {
+    e.preventDefault()
+    e.stopPropagation()
 
-            requestAnimationFrame(() => {
-                password?.focus()
-                password?.select()
-            })
-            return
-        }
-    })
+    if(!password.value.trim() || !passwordConfirm.value.trim()) {
+        err(password)
+        err(passwordConfirm)
+
+        requestAnimationFrame(() => {
+            password?.focus()
+            password?.select()
+        })
+        return
+    }
 })

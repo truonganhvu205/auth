@@ -17,66 +17,67 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
         username?.focus()
     })
+})
+
+username.addEventListener('input', () => {
+    if (username.value.trim() && !username_isValid(username.value.trim())) {
+        err(username)
+    } else {
+        clearErr(username)
+    }
+})
+
+email.addEventListener('input', () => {
+    if (email.value.trim() && !email_isValid(email.value.trim())) {
+        err(email)
+    } else {
+        clearErr(email)
+    }
+})
+
+password.addEventListener('input', () => {
+    if(password.value.trim() && !password_isValid(password.value.trim())) {
+        err(password)
+    } else {
+        clearErr(password)
+    }
     
-    username.addEventListener('input', e => {
-        if (username.value.trim() && !username_isValid(username.value.trim())) {
-            err(username)
-        } else {
-            clearErr(username)
-        }
-    })
-
-    email.addEventListener('input', () => {
-        if (email.value.trim() && !email_isValid(email.value.trim())) {
-            err(email)
-        } else {
-            clearErr(email)
-        }
-    })
-
-    password.addEventListener('input', e => {
-        if(password.value.trim() && !password_isValid(password.value.trim())) {
-            err(password)
-        } else {
-            clearErr(password)
-        }
-        
-        if (passwordConfirm.value.trim()) {
-            if (!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
-                err(passwordConfirm)
-            } else {
-                clearErr(passwordConfirm)
-            }
-        }
-    })
-
-    passwordConfirm.addEventListener('input', e => {
-        if(!passwordConfirm.value.trim()) {
-            clearErr(passwordConfirm)
-        }
-
-        if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+    if (passwordConfirm.value.trim()) {
+        if (!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
             err(passwordConfirm)
         } else {
             clearErr(passwordConfirm)
         }
-    })
+    }
+})
 
-    registerForm.addEventListener('submit', e => {
-        e.preventDefault()
+passwordConfirm.addEventListener('input', () => {
+    if(!passwordConfirm.value.trim()) {
+        clearErr(passwordConfirm)
+    }
 
-        if(!username.value.trim() || !email.value.trim() || 
-        !password.value.trim() || !passwordConfirm.value.trim()) {
-            err(username)
-            err(email)
-            err(password)
-            err(passwordConfirm)
+    if(!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+        err(passwordConfirm)
+    } else {
+        clearErr(passwordConfirm)
+    }
+})
 
-            requestAnimationFrame(() => {
-                username?.focus()
-                username?.select()
-            })
-            return
-        }
-    })
+registerForm.addEventListener('submit', e => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if(!username.value.trim() || !email.value.trim() || 
+    !password.value.trim() || !passwordConfirm.value.trim()) {
+        err(username)
+        err(email)
+        err(password)
+        err(passwordConfirm)
+
+        requestAnimationFrame(() => {
+            username?.focus()
+            username?.select()
+        })
+        return
+    }
 })

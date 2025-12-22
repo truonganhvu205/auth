@@ -11,28 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
         username?.focus()
     })
-    
-    username.addEventListener('input', e => {
-        clearErr(username)
-    })
+})
 
-    password.addEventListener('input', e => {
-        clearErr(password)
-    })
+username.addEventListener('input', () => {
+    clearErr(username)
+})
 
-    loginForm.addEventListener('submit', e => {
-        e.preventDefault()
-        e.stopPropagation()
+password.addEventListener('input', () => {
+    clearErr(password)
+})
 
-        if(!username.value.trim() || !password.value.trim()) {
-            err(username)
-            err(password)
+loginForm.addEventListener('submit', e => {
+    e.preventDefault()
+    e.stopPropagation()
 
-            requestAnimationFrame(() => {
-                username?.focus()
-                username?.select()
-            })
-            return
-        }
-    })
+    if(!username.value.trim() || !password.value.trim()) {
+        err(username)
+        err(password)
+
+        requestAnimationFrame(() => {
+            username?.focus()
+            username?.select()
+        })
+        return
+    }
 })
