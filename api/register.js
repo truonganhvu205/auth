@@ -35,6 +35,14 @@ password.addEventListener('input', e => {
     } else {
         clearErr(password)
     }
+    
+    if (passwordConfirm.value.trim()) {
+        if (!password_isMatch(password.value.trim(), passwordConfirm.value.trim())) {
+            err(passwordConfirm)
+        } else {
+            clearErr(passwordConfirm)
+        }
+    }
 })
 
 passwordConfirm.addEventListener('input', e => {
