@@ -8,8 +8,10 @@ const password = document.getElementById('password')
 const loginForm = document.getElementById('login_form')
 
 document.addEventListener('DOMContentLoaded', () => {
-    username?.focus()
-    username?.select()
+    requestAnimationFrame(() => {
+        username?.focus()
+        username?.select()
+    })
     
     username.addEventListener('input', e => {
         clearErr(username)
